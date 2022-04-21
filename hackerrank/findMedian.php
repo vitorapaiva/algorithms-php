@@ -2,7 +2,6 @@
 function findMedian($arr) {
     $arrSize = count($arr);
     $mediumIndex = intdiv($arrSize, 2);
-    $count = 0;
     for($i = 0; $i < $arrSize; $i++) {
         for($x=$i+1; $x < $arrSize; $x++) {
             if($arr[$i] > $arr[$x]) {
@@ -10,11 +9,9 @@ function findMedian($arr) {
                 $arr[$i] = $arr[$x];
                 $arr[$x] = $aux;
             }
-            $count++;
         }
     }
-    return json_encode($arr)." ".$count."\n";
-    //return $arr[$mediumIndex];
+   return $arr[$mediumIndex];
 }
 
 echo findMedian([1,2,3,4,5,6,7]);

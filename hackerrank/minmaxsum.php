@@ -1,17 +1,37 @@
 <?php
-function miniMaxSum($arr) {
-    $arrSize = count($arr);
-    for($i = 0; $i < $arrSize; $i++) {
-        for($x=$i+1; $x < $arrSize; $x++) {
-            if($arr[$i] > $arr[$x]) {
-                $aux = $arr[$i];
-                $arr[$i] = $arr[$x];
-                $arr[$x] = $aux;
+function flippingMatrix($matrix) {
+    $arrSize = count($matrix);
+    $sum = 0;
+    for($line=0;$line<$arrSize; $line++) {
+        for($column = 0; $column < $arrSize; $column++) {
+            for($x=$column+1; $x < $arrSize; $x++) {
+                if($matrix[$line][$column] < $matrix[$line][$x]) {
+                    $aux = $matrix[$line][$column];
+                    $matrix[$line][$column] = $matrix[$line][$x];
+                    $matrix[$line][$x] = $aux;
+                }
             }
         }
     }
 
-    $minSum = $arr[0] + $arr[1] + $arr[2] + $arr[3];
-    $maxSum = $arr[4] + $arr[1] + $arr[2] + $arr[3];
-    echo $minSum." ", $maxSum;
+    for($column=0;$column<$arrSize; $column++) {
+        for($line = 0; $line < $arrSize; $line++) {
+            for($x=$line+1; $x < $arrSize; $x++) {
+                if($matrix[$line][$column] < $matrix[$x][$column]) {
+                    $aux = $matrix[$line][$column];
+                    $matrix[$line][$column] = $matrix[$x][$column];
+                    $matrix[$x][$column] = $aux;
+                }
+            }
+        }
+    }
+
+    $firstQuadrantSize = $arrSize/2;
+    for($i=0; $i<$firstQuadrantSize; $i++) {
+        for($x=0; $x<$firstQuadrantSize; $x++) {
+            $sum += $matrix[$i][$x];
+        }
+    }
+
+    return $sum;
 }
