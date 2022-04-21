@@ -21,3 +21,6 @@ function calculateSumFromUnOrderedCollection(array $array, int $sum): bool
 echo calculateSumFromUnOrderedCollection([9,1,2,3], 8)."\n";
 echo calculateSumFromUnOrderedCollection([4,1,2,4], 8)."\n";
 echo calculateSumFromUnOrderedCollection([1,3,2,4], 3)."\n";
+echo calculateSumFromUnOrderedCollection([1,2,3,9], 8)."\n";
+echo calculateSumFromUnOrderedCollection([1,2,4,4], 8)."\n";
+echo calculateSumFromUnOrderedCollection([1,1,2,2,4,4], 3)."\n";
