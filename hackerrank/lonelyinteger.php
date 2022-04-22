@@ -3,14 +3,14 @@
 function lonelyinteger($a) {
     $auxArr = [];
     foreach($a as $integer) {
-        if(!isset($auxArr[$integer]["count"])) {
-            $auxArr[$integer]["count"] = 1;
+        if(!array_key_exists($integer, $auxArr)) {
+            $auxArr[$integer] = 1;
             continue;
         }
-        $auxArr[$integer]["count"]++;
+        $auxArr[$integer]++;
     }
     foreach($auxArr as $index => $count) {
-        if($count["count"]===1) {
+        if($count===1) {
             return $index;
         }
     }
